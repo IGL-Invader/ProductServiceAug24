@@ -1,4 +1,9 @@
 package com.example.ProductServiceAug24.projections;
 
-public class ProductInfo {
+public interface ProductInfo {
+
+    Long getId();
+    String getName();
+    String getDescription();
+ 
 }

@@ -1,12 +1,11 @@
-package com.example.ProductServiceAug24.mapped_super_class;
+package com.example.ProductServiceAug24.joined_table;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
 @Data
-@MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
+@Entity(name = "jt_users")
 public class User {
 
     @Id

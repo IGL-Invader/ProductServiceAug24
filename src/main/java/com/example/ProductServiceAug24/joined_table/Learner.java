@@ -1,11 +1,13 @@
-package com.example.ProductServiceAug24.mapped_super_class;
+package com.example.ProductServiceAug24.joined_table;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.Data;
 
 @Data
-@Entity(name = "msc_learners")
-public class Learner extends User{
+@Entity(name = "jt_learners")
+@PrimaryKeyJoinColumn(name = "User_id")
+public class Learner extends User {
     private String college;
     private String company;
 }
