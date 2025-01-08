@@ -3,6 +3,7 @@ package com.example.ProductServiceAug24.services;
 import com.example.ProductServiceAug24.Dtos.FakeStoreDto;
 import com.example.ProductServiceAug24.exceptions.ProductNotFoundException;
 import com.example.ProductServiceAug24.models.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,6 +32,12 @@ public class FakeStoreProductService implements productService{
         return null;
     }
 
+    @Override
+    public Page<Product> getAllProducts(int pageSize, int pageNum) {
+        return null;
+    }
+
+
     private Product convertFakeStoreToProduct(FakeStoreDto Dto){
 
         Product product = new Product();
@@ -41,6 +48,8 @@ public class FakeStoreProductService implements productService{
         return product;
 
     }
+
+
 
 }
 

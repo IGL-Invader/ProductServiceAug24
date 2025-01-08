@@ -5,6 +5,9 @@ import com.example.ProductServiceAug24.models.Product;
 import com.example.ProductServiceAug24.projections.ProductInfo;
 import com.example.ProductServiceAug24.repository.productRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -53,5 +56,13 @@ public class ProductServiceImpl implements productService{
         product = productRepository.save(product);
         System.out.println(product.getId());
         return product;
+    }
+
+
+
+    @Override
+    public Page<Product> getAllProducts(int pageSize, int pageNum) {
+
+        return productRepository.findAll(PageRequest.of(pageNum, pageSize, Sort.by("name").descending().and(Sort.by("category"))));
     }
 }

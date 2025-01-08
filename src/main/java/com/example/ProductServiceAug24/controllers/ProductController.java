@@ -6,6 +6,7 @@ import com.example.ProductServiceAug24.models.Product;
 import com.example.ProductServiceAug24.services.productService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,17 @@ public class ProductController {
          */
         System.out.println(requestDto);
         return productService.createProduct(requestDto.getName(), requestDto.getCategory(), requestDto.getDescription());
+    }
+
+    @GetMapping()
+    public ResponseEntity<Page<Product>> getAllProducts(
+            @RequestParam(value = "pageSize", defaultValue = "20") int pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum
+    ) {
+
+
+        Page<Product> products = productService.getAllProducts(pageSize, pageNum);
+        return ResponseEntity.ok(products);
     }
 
 }
